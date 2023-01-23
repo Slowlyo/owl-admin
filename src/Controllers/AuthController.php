@@ -43,9 +43,8 @@ class AuthController extends AdminController
             if ($validator->fails()) {
                 abort(Response::HTTP_BAD_REQUEST, $validator->errors()->first());
             }
-
-            $user = AdminUser::query()->where('username', $request->username)->first();
-
+            $adminModel = config("admin.auth.model");
+            $user = $adminModel::query()->where('username', $request->username)->first();
             if ($user && Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('admin')->plainTextToken;
 

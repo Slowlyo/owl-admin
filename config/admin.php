@@ -26,6 +26,7 @@ return [
         'enable'        => true,
         'controller'    => \Slowlyo\SlowAdmin\Controllers\AuthController::class,
         'guard'         => 'sanctum',
+        'model'         => \Slowlyo\SlowAdmin\Models\AdminUser::class,
         'except'        => [
 
         ],
